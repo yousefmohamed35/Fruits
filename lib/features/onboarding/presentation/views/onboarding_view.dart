@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fruiteapp/features/onboarding/presentation/views/widgets/onboarding_view_body.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Onboarding View')));
+    return Scaffold(body:OnboardingViewBody());
   }
 }
