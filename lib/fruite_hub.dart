@@ -10,13 +10,14 @@ class FruiteHub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-       localizationsDelegates: [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
+      theme: ThemeData(fontFamily: 'Cairo'),
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       routerConfig: Routes.routes,
       debugShowCheckedModeBanner: false,
     );

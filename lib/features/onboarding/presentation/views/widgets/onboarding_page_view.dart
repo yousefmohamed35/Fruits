@@ -19,7 +19,7 @@ class OnboardingPageView extends StatelessWidget {
             children: [
               Text('مرحبًا بك في ', style: TextStyles.bold23),
               Text(
-                ' HUB',
+                'HUB',
                 style: TextStyles.bold23.copyWith(
                   color: AppColors.secondaryColor,
                 ),
