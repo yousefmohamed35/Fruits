@@ -5,8 +5,26 @@ import 'package:fruiteapp/features/onboarding/presentation/views/widgets/onboard
 
 import '../../../../../core/utils/app_colors.dart';
 
-class OnboardingViewBody extends StatelessWidget {
+class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
+
+  @override
+  State<OnboardingViewBody> createState() => _OnboardingViewBodyState();
+}
+
+class _OnboardingViewBodyState extends State<OnboardingViewBody> {
+  late PageController pageController;
+  var currentPage = 0;
+  @override
+  void initState() {
+    pageController = PageController();
+    pageController.addListener(() {
+      setState(() {
+        currentPage = pageController.page!.round();
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
