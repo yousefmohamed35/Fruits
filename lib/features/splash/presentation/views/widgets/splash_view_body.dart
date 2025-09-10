@@ -31,7 +31,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(children: [SvgPicture.asset(Assets.imagesPlant)]),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [SvgPicture.asset(Assets.imagesPlant)],
+        ),
         CustomBounceInDown(
           duration: Duration(seconds: 1),
           child: SvgPicture.asset(Assets.imagesLogoo),
