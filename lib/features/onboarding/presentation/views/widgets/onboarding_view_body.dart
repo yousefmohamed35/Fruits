@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:fruiteapp/core/widgets/custom_button.dart';
 import 'package:fruiteapp/features/onboarding/presentation/views/widgets/onboarding_page_view.dart';
 
 import '../../../../../core/utils/app_colors.dart';
@@ -20,6 +21,12 @@ class OnboardingViewBody extends StatelessWidget {
               color: AppColors.primaryColor.withOpacity(0.3),
             ),
           ),
+          const SizedBox(height: 29),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: CustomButton(onPressed: () {}, title: 'ابدأ الآن'),
+          ),
+          const SizedBox(height: 43),
         ],
       ),
     );
