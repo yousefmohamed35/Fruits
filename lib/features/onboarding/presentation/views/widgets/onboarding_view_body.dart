@@ -2,7 +2,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:fruiteapp/core/widgets/custom_button.dart';
 import 'package:fruiteapp/features/onboarding/presentation/views/widgets/onboarding_page_view.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routes/kay_route.dart';
 import '../../../../../core/utils/app_colors.dart';
 
 class OnboardingViewBody extends StatefulWidget {
@@ -36,7 +38,6 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             dotsCount: 2,
             position: currentPage.toDouble(),
             decorator: DotsDecorator(
-              
               activeColor: AppColors.primaryColor,
               color: AppColors.primaryColor.withOpacity(0.3),
             ),
@@ -49,7 +50,12 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             maintainSize: true,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: CustomButton(onPressed: () {}, title: 'ابدأ الآن'),
+              child: CustomButton(
+                onPressed: () {
+                  GoRouter.of(context).go(KayRoute.login);
+                },
+                title: 'ابدأ الآن',
+              ),
             ),
           ),
           const SizedBox(height: 43),

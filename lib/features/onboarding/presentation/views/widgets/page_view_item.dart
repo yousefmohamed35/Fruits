@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg.dart';
 
+import '../../../../../core/routes/kay_route.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -40,10 +42,15 @@ class PageViewItem extends StatelessWidget {
                 child: Positioned(
                   top: 16,
                   right: 16,
-                  child: Text(
-                    'تخط',
-                    style: TextStyles.regular13.copyWith(
-                      color: Color(0xff959D9E),
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).go(KayRoute.login);
+                    },
+                    child: Text(
+                      'تخط',
+                      style: TextStyles.regular13.copyWith(
+                        color: Color(0xff959D9E),
+                      ),
                     ),
                   ),
                 ),
