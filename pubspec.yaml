@@ -28,15 +28,16 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter_localizations:
-    sdk: flutter
   animate_do: ^4.2.0
   cupertino_icons: ^1.0.8
+  dots_indicator: ^4.0.1
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   go_router: ^16.2.1
-  svg_flutter: ^0.0.1
   intl: ^0.20.2
+  svg_flutter: ^0.0.1
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4

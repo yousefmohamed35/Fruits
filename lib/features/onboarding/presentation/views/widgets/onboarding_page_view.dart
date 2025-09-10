@@ -19,6 +19,13 @@ class OnboardingPageView extends StatelessWidget {
               'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.',
           backgroundImage: Assets.imagesPageViewItem1BackgroundImage,
         ),
+        PageViewItem(
+          image: Assets.imagesPageViewItem2Image,
+          title: Text('ابحث وتسوق'),
+          subTitle:
+              'نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية',
+          backgroundImage: Assets.imagesPageViewItem2BackgroundImage,
+        ),
       ],
     );
   }
