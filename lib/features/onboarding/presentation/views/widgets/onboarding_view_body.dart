@@ -31,18 +31,26 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
     return SafeArea(
       child: Column(
         children: [
-          Expanded(child: OnboardingPageView()),
+          Expanded(child: OnboardingPageView(pageController: pageController)),
           DotsIndicator(
             dotsCount: 2,
+            position: currentPage.toDouble(),
             decorator: DotsDecorator(
+              
               activeColor: AppColors.primaryColor,
               color: AppColors.primaryColor.withOpacity(0.3),
             ),
           ),
           const SizedBox(height: 29),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: CustomButton(onPressed: () {}, title: 'ابدأ الآن'),
+          Visibility(
+            visible: currentPage == 1,
+            maintainAnimation: true,
+            maintainState: true,
+            maintainSize: true,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: CustomButton(onPressed: () {}, title: 'ابدأ الآن'),
+            ),
           ),
           const SizedBox(height: 43),
         ],

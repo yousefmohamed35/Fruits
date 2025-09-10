@@ -8,11 +8,13 @@ class PageViewItem extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.backgroundImage,
+    required this.isVisible,
   });
   final String image;
   final Widget title;
   final String subTitle;
   final String backgroundImage;
+  final bool isVisible;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +33,10 @@ class PageViewItem extends StatelessWidget {
                 right: 0,
                 child: SvgPicture.asset(image),
               ),
-              Positioned(top: 16, right: 16, child: Text('تخط')),
+              Visibility(
+                visible: isVisible,
+                child: Positioned(top: 16, right: 16, child: Text('تخط')),
+              ),
             ],
           ),
         ),
