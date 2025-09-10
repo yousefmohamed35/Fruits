@@ -3,6 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg.dart';
 
 import '../../../../../core/routes/kay_route.dart';
+import '../../../../../core/services/setup_service_locator.dart';
+import '../../../../../core/services/shared_prefrences_services.dart';
+import '../../../../../core/utils/app_constants.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -44,6 +47,10 @@ class PageViewItem extends StatelessWidget {
                   right: 16,
                   child: GestureDetector(
                     onTap: () {
+                      getIt.get<SharedPreferencesService>().setBool(
+                        AppConstants.kIsOnboardingSeen,
+                        true,
+                      );
                       GoRouter.of(context).go(KayRoute.login);
                     },
                     child: Text(

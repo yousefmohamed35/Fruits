@@ -5,7 +5,10 @@ import 'package:fruiteapp/features/onboarding/presentation/views/widgets/onboard
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/routes/kay_route.dart';
+import '../../../../../core/services/setup_service_locator.dart';
+import '../../../../../core/services/shared_prefrences_services.dart';
 import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_constants.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
@@ -52,6 +55,10 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: CustomButton(
                 onPressed: () {
+                  getIt.get<SharedPreferencesService>().setBool(
+                    AppConstants.kIsOnboardingSeen,
+                    true,
+                  );
                   GoRouter.of(context).go(KayRoute.login);
                 },
                 title: 'ابدأ الآن',
