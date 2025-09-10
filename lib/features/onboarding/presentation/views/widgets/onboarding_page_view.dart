@@ -12,6 +12,7 @@ class OnboardingPageView extends StatelessWidget {
         PageViewItem(
           image: Assets.imagesPageViewItem1Image,
           title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [Text('مرحبًا بك في '), Text('Fruit'), Text('HUB')],
           ),
           subTitle:
