@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   go_router: ^16.2.1
+  svg_flutter: ^0.0.1
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
@@ -86,6 +87,6 @@ flutter_launcher_icons:
   min_sdk_android: 21 # android min sdk min:16, default 21
 flutter_assets:
   assets_path: assets/images/
-  output_path: lib/utils/
+  output_path: lib/core/utils/
   filename: app_images.dart
-  field_prefix:
+  field_prefix: null
