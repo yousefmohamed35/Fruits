@@ -1,11 +1,12 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routes/kay_route.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 
 class DontHaveAccount extends StatelessWidget {
-  const DontHaveAccount({
-    super.key,
-  });
+  const DontHaveAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +20,12 @@ class DontHaveAccount extends StatelessWidget {
             ),
           ),
           TextSpan(
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                GoRouter.of(context).push(KayRoute.signup);
+              },
             text: ' قم بإنشاء حساب',
-            style: TextStyles.semiBold16.copyWith(
-              color: Color(0xff1B5E37),
-            ),
+            style: TextStyles.semiBold16.copyWith(color: Color(0xff1B5E37)),
           ),
         ],
       ),
