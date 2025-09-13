@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruiteapp/core/widgets/custom_button.dart';
 
+import '../../../../../core/helper/build_error_bar.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../manager/signup/signup_cubit.dart';
 import 'have_account.dart';
@@ -17,6 +18,7 @@ class SignupViewBody extends StatefulWidget {
 
 class _SignupViewBodyState extends State<SignupViewBody> {
   late String name, email, password;
+  bool isTermsAccepted = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   @override
@@ -52,18 +54,31 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 },
               ),
               const SizedBox(height: 16),
-              TermsAndConditionsWidget(),
+              TermsAndConditionsWidget(
+                onAccepted: (value) {
+                  isTermsAccepted = value;
+                },
+              ),
               const SizedBox(height: 30),
               CustomButton(
                 title: 'إنشاء حساب جديد',
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    context.read<SignupCubit>().createUserWithEmailAndPassword(
-                      name: name,
-                      email: email,
-                      password: password,
-                    );
+                    if (isTermsAccepted) {
+                      context
+                          .read<SignupCubit>()
+                          .createUserWithEmailAndPassword(
+                            name: name,
+                            email: email,
+                            password: password,
+                          );
+                    } else {
+                      buildErrorBar(
+                        context,
+                        'يجب الموافقة على الشروط والأحكام',
+                      );
+                    }
                   } else {
                     setState(() {
                       autoValidateMode = AutovalidateMode.always;
