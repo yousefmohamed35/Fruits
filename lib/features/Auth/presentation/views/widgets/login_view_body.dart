@@ -5,6 +5,7 @@ import 'package:fruiteapp/core/widgets/custom_text_form_field.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 import 'dont_have_account.dart';
+import 'or_divider.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -48,6 +49,8 @@ class LoginViewBody extends StatelessWidget {
             CustomButton(title: 'تسجيل الدخول', onPressed: () {}),
             const SizedBox(height: 32),
             const DontHaveAccount(),
+            const SizedBox(height: 32),
+            const OrDivider(),
           ],
         ),
       ),
