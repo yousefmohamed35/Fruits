@@ -1,7 +1,7 @@
 import 'package:fruiteapp/features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/Auth/presentation/views/login_view.dart';
+import '../../features/Auth/presentation/views/signin_view.dart';
 import '../../features/Auth/presentation/views/signup_view.dart';
 import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import 'kay_route.dart';
@@ -24,7 +24,7 @@ abstract class Routes {
       GoRoute(
         path: KayRoute.login,
         builder: (context, state) {
-          return const LoginView();
+          return const SigninView();
         },
       ),
       GoRoute(
