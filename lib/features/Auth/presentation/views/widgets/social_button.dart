@@ -18,7 +18,7 @@ class SocialButton extends StatelessWidget {
             side: const BorderSide(color: Color(0xffDCDEDE)),
           ),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: ListTile(
           visualDensity: VisualDensity(vertical: VisualDensity.minimumDensity),
           title: Text(
