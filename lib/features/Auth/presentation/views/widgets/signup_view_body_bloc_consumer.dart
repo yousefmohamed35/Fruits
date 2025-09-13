@@ -4,6 +4,8 @@ import 'package:fruiteapp/features/Auth/presentation/manager/signup/signup_cubit
 import 'package:fruiteapp/features/Auth/presentation/views/widgets/signup_view_body.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../../../../../core/helper/build_error_bar.dart';
+
 class SignupViewBodyBlocConsumer extends StatelessWidget {
   const SignupViewBodyBlocConsumer({super.key});
 
@@ -13,9 +15,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SignupSuccess) {
         } else if (state is SignupFailure) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.message)));
+          buildErrorBar(context, state.message);
         }
       },
       builder: (context, state) {

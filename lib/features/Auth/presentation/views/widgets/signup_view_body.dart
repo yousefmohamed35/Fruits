@@ -5,6 +5,7 @@ import 'package:fruiteapp/core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../manager/signup/signup_cubit.dart';
 import 'have_account.dart';
+import 'password_form_field.dart';
 import 'terms_and_conditions_widget_state.dart';
 
 class SignupViewBody extends StatefulWidget {
@@ -45,19 +46,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 16),
-              CustomTextFormField(
+              PasswordFormField(
                 onSaved: (value) {
                   password = value!;
                 },
-                hintText: 'كلمة المرور',
-                keyboardType: TextInputType.visiblePassword,
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.remove_red_eye,
-                    color: Color(0xffC9CECF),
-                  ),
-                ),
               ),
               const SizedBox(height: 16),
               TermsAndConditionsWidget(),
