@@ -25,7 +25,7 @@ class AuthRepoImpl implements AuthRepo {
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
-      return left(ServerFailure('An unexpected error occurred.'));
+      return left(ServerFailure('حدث خطأ غير معروف.'));
     }
   }
 }
