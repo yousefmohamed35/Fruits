@@ -6,8 +6,8 @@ import 'custom_check_box.dart';
 
 
 class TermsAndConditionsWidget extends StatefulWidget {
-  const TermsAndConditionsWidget({super.key});
-
+  const TermsAndConditionsWidget({super.key,required this.onAccepted});
+final ValueChanged<bool> onAccepted;
 
   @override
   State<TermsAndConditionsWidget> createState() =>
@@ -23,7 +23,7 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
         CustomCheckBox(
           onChecked: (value) {
             isTermsAccepted = value;
-            
+            widget.onAccepted(value);
             setState(() {});
           },
           isChecked: isTermsAccepted,
