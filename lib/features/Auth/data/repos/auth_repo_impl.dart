@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruiteapp/core/error/exception/custom_exception.dart';
 import 'package:fruiteapp/core/services/firebase_auth_services.dart';
@@ -25,6 +27,7 @@ class AuthRepoImpl implements AuthRepo {
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
+      log('Error in AuthRepoImpl.createUserWithEmailAndPassword: $e');
       return left(ServerFailure('حدث خطأ غير معروف.'));
     }
   }
