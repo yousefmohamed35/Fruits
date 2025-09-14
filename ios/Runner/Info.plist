@@ -45,5 +45,36 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>GIDClientID</key>
+<string>626057676839-b4u4s76evg4sast5vbe12i9bve1j1hnh.apps.googleusercontent.com</string>
+<key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<!-- TODO Replace this value: -->
+			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+			<string>com.googleusercontent.apps.626057676839-b4u4s76evg4sast5vbe12i9bve1j1hnh</string>
+		</array>
+	</dict>
+</array>
+
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb1196445912500335</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>1196445912500335</string>
+<key>FacebookClientToken</key>
+<string>83db93e5c36b1a15c3b7c9a91ad08411</string>
+<key>FacebookDisplayName</key>
+<string>Fruit-Hub</string>
 </dict>
 </plist>
