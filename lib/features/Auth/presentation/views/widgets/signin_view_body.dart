@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruiteapp/core/utils/app_colors.dart';
@@ -88,14 +90,20 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 },
                 imageIcon: Assets.imagesGoogleIcon,
               ),
-              const SizedBox(height: 16),
-              SocialButton(
-                title: 'تسجيل بواسطة أبل',
-                onPressed: () {
-                  context.read<SigninCubit>().signInWithApple();
-                },
-                imageIcon: Assets.imagesApplIcon,
-              ),
+              Platform.isIOS
+                  ? Column(
+                      children: [
+                        const SizedBox(height: 16),
+                        SocialButton(
+                          title: 'تسجيل بواسطة أبل',
+                          onPressed: () {
+                            context.read<SigninCubit>().signInWithApple();
+                          },
+                          imageIcon: Assets.imagesApplIcon,
+                        ),
+                      ],
+                    )
+                  : const SizedBox(),
               const SizedBox(height: 16),
               SocialButton(
                 title: 'تسجيل بواسطة فيسبوك',
