@@ -60,5 +60,21 @@
 		</array>
 	</dict>
 </array>
+
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb1196445912500335</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>1196445912500335</string>
+<key>FacebookClientToken</key>
+<string>83db93e5c36b1a15c3b7c9a91ad08411</string>
+<key>FacebookDisplayName</key>
+<string>Fruit-Hub</string>
 </dict>
 </plist>

@@ -1,4 +1,5 @@
 import 'dart:developer' as dev;
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruiteapp/core/error/exception/custom_exception.dart';
@@ -84,19 +85,42 @@ class FirebaseAuthServices {
     return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
   }
 
-  Future<User> signInWithFacebook() async {
-    // Trigger the sign-in flow
-    final LoginResult loginResult = await FacebookAuth.instance.login();
+ Future<User> signInWithFacebook() async {
+    final rawNonce = generateNonce();
+    final nonce = sha256ofString(rawNonce);
+    final LoginResult loginResult =
+        await FacebookAuth.instance.login(nonce: nonce);
+    OAuthCredential facebookAuthCredential;
 
-    // Create a credential from the access token
-    final OAuthCredential facebookAuthCredential =
-        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+    if (Platform.isIOS) {
+      switch (loginResult.accessToken!.type) {
+        case AccessTokenType.classic:
+          final token = loginResult.accessToken as ClassicToken;
+          facebookAuthCredential = FacebookAuthProvider.credential(
+            token.authenticationToken!,
+          );
+          break;
+        case AccessTokenType.limited:
+          final token = loginResult.accessToken as LimitedToken;
+          facebookAuthCredential = OAuthCredential(
+            providerId: 'facebook.com',
+            signInMethod: 'oauth',
+            idToken: token.tokenString,
+            rawNonce: rawNonce,
+          );
+          break;
+      }
+    } else {
+      facebookAuthCredential = FacebookAuthProvider.credential(
+        loginResult.accessToken!.tokenString,
+      );
+    }
 
-    // Once signed in, return the UserCredential
-    return (await FirebaseAuth.instance.signInWithCredential(
-      facebookAuthCredential,
-    )).user!;
+    return (await FirebaseAuth.instance
+            .signInWithCredential(facebookAuthCredential))
+        .user!;
   }
+
 
   String generateNonce([int length = 32]) {
     final charset =
