@@ -33,7 +33,9 @@ class FirebaseAuthServices {
         throw CustomException('حدث خطأ غير معروف.');
       }
     } catch (e) {
-       dev.log('Error in FirebaseAuthServices.createUserWithEmailAndPassword: $e');
+      dev.log(
+        'Error in FirebaseAuthServices.createUserWithEmailAndPassword: $e',
+      );
       throw CustomException('حدث خطأ: يرجى المحاولة مرة أخرى لاحقاً.');
     }
   }
@@ -64,7 +66,7 @@ class FirebaseAuthServices {
         throw CustomException('حدث خطأ غير معروف.');
       }
     } catch (e) {
-     dev.log('Error in FirebaseAuthServices.signInWithEmailAndPassword: $e');
+      dev.log('Error in FirebaseAuthServices.signInWithEmailAndPassword: $e');
       throw CustomException('حدث خطأ: يرجى المحاولة مرة أخرى لاحقاً.');
     }
   }
@@ -113,7 +115,7 @@ class FirebaseAuthServices {
     return digest.toString();
   }
 
-  Future<UserCredential> signInWithApple() async {
+  Future<User> signInWithApple() async {
     final rawNonce = generateNonce();
     final nonce = sha256ofString(rawNonce);
     final appleCredential = await SignInWithApple.getAppleIDCredential(
@@ -126,6 +128,8 @@ class FirebaseAuthServices {
     final oauthCredential = OAuthProvider(
       "apple.com",
     ).credential(idToken: appleCredential.identityToken, rawNonce: rawNonce);
-    return await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+    return (await FirebaseAuth.instance.signInWithCredential(
+      oauthCredential,
+    )).user!;
   }
 }
