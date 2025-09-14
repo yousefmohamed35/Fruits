@@ -31,9 +31,12 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure('حدث خطأ غير معروف.'));
     }
   }
-  
+
   @override
-  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword({required String email, required String password}) async {
+  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     try {
       var user = await firebaseAuthServices.signInWithEmailAndPassword(
         email: email,
@@ -47,9 +50,9 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure('حدث خطأ غير معروف.'));
     }
   }
-  
+
   @override
-  Future<Either<Failure, UserEntity>> signInWithGoogle()async {
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
     try {
       var user = await firebaseAuthServices.signInWithGoogle();
       return right(UserModel.fromFirebaseUser(user));
@@ -58,5 +61,15 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure('حدث خطأ غير معروف.'));
     }
   }
-  
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      var user = await firebaseAuthServices.signInWithFacebook();
+      return right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log('Error in AuthRepoImpl.signInWithFacebook: $e');
+      return left(ServerFailure('حدث خطأ غير معروف.'));
+    }
+  }
 }
